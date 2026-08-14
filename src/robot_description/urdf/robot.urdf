@@ -1,0 +1,244 @@
+<?xml version="1.0"?>
+
+<robot name="diff_drive_robot">
+
+  <!-- ==================== -->
+  <!--        车身           -->
+  <!-- ==================== -->
+
+  <link name="base_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.3 0.1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="0.8 0.0 0.0 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <box size="0.4 0.3 0.1"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="2.0"/>
+      <inertia
+        ixx="0.01667"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.02833"
+        iyz="0.0"
+        izz="0.04167"/>
+    </inertial>
+
+  </link>
+
+
+  <!-- ==================== -->
+  <!--        左轮           -->
+  <!-- ==================== -->
+
+  <link name="left_wheel_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.05 0.05 0.05 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.04"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+        ixx="0.00077"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.001406"
+        iyz="0.0"
+        izz="0.00077"/>
+    </inertial>
+
+  </link>
+
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel_link"/>
+    <origin xyz="-0.05 0.17 -0.025" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <!-- ==================== -->
+  <!--        右轮           -->
+  <!-- ==================== -->
+
+  <link name="right_wheel_link">
+
+    <visual>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.04"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0.05 0.05 0.05 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <origin xyz="0 0 0" rpy="1.5708 0 0"/>
+      <geometry>
+        <cylinder radius="0.075" length="0.04"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="0.5"/>
+      <inertia
+        ixx="0.00077"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.001406"
+        iyz="0.0"
+        izz="0.00077"/>
+    </inertial>
+
+  </link>
+
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel_link"/>
+    <origin xyz="-0.05 -0.17 -0.025" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+
+  <!-- ==================== -->
+  <!--      前支撑轮 caster   -->
+  <!-- ==================== -->
+
+  <link name="caster_link">
+
+    <visual>
+      <geometry>
+        <sphere radius="0.04"/>
+      </geometry>
+      <material name="caster_black">
+        <color rgba="0.1 0.1 0.1 1.0"/>
+      </material>
+    </visual>
+
+    <collision>
+      <geometry>
+        <sphere radius="0.04"/>
+      </geometry>
+    </collision>
+
+    <inertial>
+      <mass value="0.1"/>
+      <inertia
+        ixx="0.000064"
+        ixy="0.0"
+        ixz="0.0"
+        iyy="0.000064"
+        iyz="0.0"
+        izz="0.000064"/>
+    </inertial>
+
+  </link>
+
+  <joint name="caster_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="caster_link"/>
+    <origin xyz="0.15 0 -0.06" rpy="0 0 0"/>
+  </joint>
+
+
+  <!-- ==================== -->
+  <!--     Gazebo 外观/摩擦   -->
+  <!-- ==================== -->
+
+  <gazebo reference="base_link">
+    <material>Gazebo/Red</material>
+  </gazebo>
+
+  <gazebo reference="left_wheel_link">
+    <material>Gazebo/Black</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+
+  <gazebo reference="right_wheel_link">
+    <material>Gazebo/Black</material>
+    <mu1>1.0</mu1>
+    <mu2>1.0</mu2>
+  </gazebo>
+
+  <gazebo reference="caster_link">
+    <material>Gazebo/Black</material>
+    <mu1>0.0</mu1>
+    <mu2>0.0</mu2>
+  </gazebo>
+
+
+  <!-- ==================== -->
+  <!--     差速驱动插件       -->
+  <!-- ==================== -->
+
+  <gazebo>
+
+    <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
+
+      <update_rate>50</update_rate>
+
+      <left_joint>left_wheel_joint</left_joint>
+      <right_joint>right_wheel_joint</right_joint>
+
+      <wheel_separation>0.34</wheel_separation>
+      <wheel_diameter>0.15</wheel_diameter>
+
+      <max_wheel_torque>20</max_wheel_torque>
+      <max_wheel_acceleration>2.0</max_wheel_acceleration>
+
+      <command_topic>cmd_vel</command_topic>
+
+      <publish_odom>true</publish_odom>
+      <publish_odom_tf>true</publish_odom_tf>
+      <publish_wheel_tf>true</publish_wheel_tf>
+
+      <odometry_topic>odom</odometry_topic>
+      <odometry_frame>odom</odometry_frame>
+      <robot_base_frame>base_link</robot_base_frame>
+
+    </plugin>
+
+  </gazebo>
+
+</robot>
+
+
+
+
+
+
+
+
+
+
