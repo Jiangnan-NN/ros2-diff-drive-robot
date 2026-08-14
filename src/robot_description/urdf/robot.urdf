@@ -162,10 +162,7 @@
   </joint>
 
 
-  <!-- ==================== -->
-  <!--     Gazebo 外观/摩擦   -->
-  <!-- ==================== -->
-
+  <!--Gazebo 外观/摩擦-->
   <gazebo reference="base_link">
     <material>Gazebo/Red</material>
   </gazebo>
@@ -189,10 +186,7 @@
   </gazebo>
 
 
-  <!-- ==================== -->
-  <!--     差速驱动插件       -->
-  <!-- ==================== -->
-
+  <!--差速驱动插件??-->
   <gazebo>
 
     <plugin name="diff_drive" filename="libgazebo_ros_diff_drive.so">
