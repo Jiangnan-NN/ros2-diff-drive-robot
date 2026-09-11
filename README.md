@@ -217,10 +217,20 @@ The repository was reorganized to improve reproducibility and readability:
 - Added copy-pasteable build and run instructions
 - Added project visuals and directory documentation
 
+### Week 4 – Navigation in Simulation
+
+- Configured the Nav2 stack
+- Loaded the saved map and set up AMCL localization
+- Tested autonomous navigation to target goals
+- Created a larger map for navigation testing
+- Tuned Nav2 controller and planner parameters
+- Improved navigation stability and smoothness
+
 ## Next Steps
 
-- Configure Nav2 for autonomous navigation
-- Configure global and local costmaps
-- Test navigation to target poses and waypoints
-- Tune navigation and planner parameters
-- Prepare the ROS 2 software stack for later hardware integration
+- Prepare Arduino motor and encoder control firmware
+- Configure ROS 2 interface for encoder data
+- Integrate the RPLIDAR A1 ROS 2 driver
+- Publish and verify the `/scan` topic
+- Implement wheel odometry and publish `/odom`
+- Prepare the software stack for physical robot testing
