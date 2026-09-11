@@ -27,6 +27,7 @@ setup(
     },
     entry_points={
         'console_scripts': [
+            'encoder_odometry = robot_bringup.encoder_odometry:main',
         ],
     },
 )
