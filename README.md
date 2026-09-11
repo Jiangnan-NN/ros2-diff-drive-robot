@@ -226,6 +226,12 @@ The repository was reorganized to improve reproducibility and readability:
 - Tuned Nav2 controller and planner parameters
 - Improved navigation stability and smoothness
 
+### Week 5 – Hardware Assembly
+
+- Physical robot assembly is handled by the company
+- Hardware components will be provided pre-assembled
+- Continued with software preparation for Week 6
+
 ## Next Steps
 
 - Prepare Arduino motor and encoder control firmware
