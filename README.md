@@ -232,11 +232,21 @@ The repository was reorganized to improve reproducibility and readability:
 - Hardware components will be provided pre-assembled
 - Continued with software preparation for Week 6
 
+### Week 6 – Hardware Bring-up Preparation
+
+- Prepared Arduino motor and encoder firmware
+- Added encoder tick and wheel speed processing
+- Integrated the RPLIDAR A1 ROS 2 driver
+- Prepared `/scan` integration for the physical LiDAR
+- Implemented wheel odometry from encoder data
+- Published odometry on `/odom`
+- Verified straight and turning odometry using simulated encoder data
+
 ## Next Steps
 
-- Prepare Arduino motor and encoder control firmware
-- Configure ROS 2 interface for encoder data
-- Integrate the RPLIDAR A1 ROS 2 driver
-- Publish and verify the `/scan` topic
-- Implement wheel odometry and publish `/odom`
-- Prepare the software stack for physical robot testing
+- Connect and validate the physical robot hardware
+- Verify real encoder data and `/odom`
+- Verify RPLIDAR A1 data on `/scan`
+- Run SLAM Toolbox on the physical robot
+- Tune SLAM parameters for the real environment
+- Generate and validate the final real-world map
