@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Eight-week ROS 2 autonomous mobile robot internship project: simulation, SLAM, Nav2, hardware integration, and validation."
+    />
+    <meta name="theme-color" content="#07111f" />
+    <link
+      rel="icon"
+      type="image/svg+xml"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2307111f'/%3E%3Cpath d='M18 24h28v22H18zM24 17h16v7H24z' fill='none' stroke='%2365e9ff' stroke-width='4'/%3E%3Ccircle cx='26' cy='34' r='3' fill='%23ffb25b'/%3E%3Ccircle cx='38' cy='34' r='3' fill='%23ffb25b'/%3E%3Cpath d='M25 42h14' stroke='%2365e9ff' stroke-width='3'/%3E%3C/svg%3E"
+    />
+    <title>ROS 2 Autonomous Mobile Robot</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="Robot project home">
+        <span class="brand-mark" aria-hidden="true">R2</span>
+        <span>ROBOT<span class="brand-dim">/08</span></span>
+      </a>
+      <nav>
+        <a href="#architecture">Architecture</a>
+        <a href="#progress">Progress</a>
+        <a href="#validation">Validation</a>
+      </nav>
+      <span class="header-status"><i></i> Week 7 active</span>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="project-title">
+        <div class="hero-copy">
+          <p class="eyebrow">8-WEEK ROBOTICS INTERNSHIP · ROS 2 HUMBLE</p>
+          <h1 id="project-title">Autonomous mobile robot,<br /><span>from simulation to hardware.</span></h1>
+          <p class="hero-summary">
+            A differential-drive robotics platform integrating LiDAR, wheel encoders,
+            SLAM Toolbox, Nav2, RViz2, and Gazebo. The current phase brings mapping
+            from a verified simulation stack onto the physical robot.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#progress">View project log <span aria-hidden="true">↓</span></a>
+            <a class="button secondary" href="#architecture">Inspect data flow</a>
+          </div>
+        </div>
+
+        <div class="mission-panel" aria-label="Current mission status">
+          <div class="panel-topline">
+            <span>MISSION STATUS</span>
+            <span>07 / 08</span>
+          </div>
+          <div class="radar" aria-hidden="true">
+            <span class="ring ring-1"></span>
+            <span class="ring ring-2"></span>
+            <span class="ring ring-3"></span>
+            <span class="sweep"></span>
+            <span class="robot-dot"></span>
+            <span class="map-wall wall-a"></span>
+            <span class="map-wall wall-b"></span>
+            <span class="map-wall wall-c"></span>
+          </div>
+          <div class="mission-title">
+            <span class="pulse"></span>
+            <div><strong>SLAM ON HARDWARE</strong><small>Mapping pipeline in progress</small></div>
+          </div>
+          <dl class="telemetry">
+            <div><dt>Target room</dt><dd>5 × 5 m</dd></div>
+            <div><dt>Sensor rate</dt><dd>≥ 10 Hz</dd></div>
+            <div><dt>Map accuracy</dt><dd>± 5 cm</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <section class="metrics" aria-label="Project highlights">
+        <article><strong>ROS 2</strong><span>Humble on Ubuntu 22.04</span></article>
+        <article><strong>2D SLAM</strong><span>LiDAR + wheel odometry</span></article>
+        <article><strong>Nav2</strong><span>AMCL + DWB controller</span></article>
+        <article><strong>10 / 10</strong><span>Target collision-free runs</span></article>
+      </section>
+
+      <section class="section architecture" id="architecture" aria-labelledby="architecture-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">SYSTEM / DATA FLOW</p><h2 id="architecture-title">One stack, two environments.</h2></div>
+          <p>The same ROS 2 interfaces connect the tested simulation workflow to real sensors and actuators.</p>
+        </div>
+
+        <div class="flow" aria-label="Robot software architecture">
+          <article class="flow-card sensor">
+            <span class="card-index">01</span><span class="card-icon" aria-hidden="true">⌁</span>
+            <h3>Perception</h3><p>RPLIDAR A1</p><code>/scan</code>
+          </article>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <article class="flow-card core">
+            <span class="card-index">02</span><span class="card-icon" aria-hidden="true">◎</span>
+            <h3>Localization</h3><p>SLAM Toolbox / AMCL</p><code>map → odom</code>
+          </article>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <article class="flow-card plan">
+            <span class="card-index">03</span><span class="card-icon" aria-hidden="true">⌘</span>
+            <h3>Navigation</h3><p>Nav2 + DWB Planner</p><code>/cmd_vel</code>
+          </article>
+          <span class="flow-arrow" aria-hidden="true">→</span>
+          <article class="flow-card motor">
+            <span class="card-index">04</span><span class="card-icon" aria-hidden="true">⚙</span>
+            <h3>Motion</h3><p>Motor + encoders</p><code>/odom</code>
+          </article>
+        </div>
+
+        <div class="tf-strip">
+          <span>TF TREE</span>
+          <code>map</code><b>→</b><code>odom</code><b>→</b><code>base_footprint</code><b>→</b><code>base_link</code><b>→</b><code>laser</code>
+        </div>
+      </section>
+
+      <section class="section progress-section" id="progress" aria-labelledby="progress-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">BUILD LOG / 8 WEEKS</p><h2 id="progress-title">Project progress.</h2></div>
+          <div class="legend"><span><i class="done-dot"></i> Complete</span><span><i class="active-dot"></i> Active</span><span><i class="planned-dot"></i> Planned</span></div>
+        </div>
+
+        <div class="timeline">
+          <article class="week done"><div class="week-no">W01</div><div class="week-body"><span class="state">Complete</span><h3>Environment & Git</h3><p>Ubuntu 22.04 on WSL2, ROS 2 Humble, RViz2, Gazebo, and the project repository.</p><ul><li>Reproducible development setup</li><li>Version-controlled workflow</li></ul></div></article>
+          <article class="week done"><div class="week-no">W02</div><div class="week-body"><span class="state">Complete</span><h3>Robot Model & Simulation</h3><p>Differential-drive URDF with wheels and caster, spawned and driven in Gazebo.</p><ul><li>RobotModel verified in RViz2</li><li>Keyboard teleoperation working</li></ul></div></article>
+          <article class="week done"><div class="week-no">W03</div><div class="week-body"><span class="state">Complete</span><h3>LiDAR & SLAM</h3><p>LaserScan visualization and online mapping with SLAM Toolbox in simulation.</p><ul><li><code>/scan</code> pipeline verified</li><li>2D map generated</li></ul></div></article>
+          <article class="week done"><div class="week-no">W04</div><div class="week-body"><span class="state">Complete</span><h3>Autonomous Navigation</h3><p>Saved-map localization, goal planning, and autonomous motion using Nav2.</p><ul><li>AMCL + TF configured</li><li>DWB parameters tuned</li></ul></div></article>
+          <article class="week done"><div class="week-no">W05</div><div class="week-body"><span class="state">Complete</span><h3>Hardware Preparation</h3><p>Interface planning and handoff while the physical platform was assembled.</p><ul><li>Sensor and motor interfaces defined</li><li>Bringup plan prepared</li></ul></div></article>
+          <article class="week done"><div class="week-no">W06</div><div class="week-body"><span class="state">Complete</span><h3>Hardware Integration</h3><p>Motor and encoder firmware, odometry pipeline, RPLIDAR driver, and bringup package.</p><ul><li>10 Hz wheel-speed output</li><li><code>/odom</code>, TF, and <code>/scan</code> interfaces</li></ul></div></article>
+          <article class="week active"><div class="week-no">W07</div><div class="week-body"><span class="state">In progress</span><h3>SLAM on Hardware</h3><p>Build, tune, save, and verify a real-world map for final navigation.</p><ul><li>Validate scan, odometry, and TF</li><li>Map a 5 × 5 m room in under 5 min</li></ul></div></article>
+          <article class="week planned"><div class="week-no">W08</div><div class="week-body"><span class="state">Planned</span><h3>Navigation & Handoff</h3><p>Deploy Nav2 on the real map, run validation trials, and document the system.</p><ul><li>5 m route within 30 s</li><li>10 collision-free trials</li></ul></div></article>
+        </div>
+      </section>
+
+      <section class="section validation" id="validation" aria-labelledby="validation-title">
+        <div class="section-heading">
+          <div><p class="eyebrow">FINAL ACCEPTANCE</p><h2 id="validation-title">Measured, not assumed.</h2></div>
+          <p>Clear pass criteria keep the final hardware demonstration focused and repeatable.</p>
+        </div>
+        <div class="validation-grid">
+          <article><span>T1</span><strong>Map completeness</strong><p>Map a 5 × 5 m room within 5 minutes.</p><div class="bar"><i style="--progress: 76%"></i></div><small>Week 7 · in progress</small></article>
+          <article><span>T2</span><strong>Navigation speed</strong><p>Complete a 5 m autonomous route within 30 seconds.</p><div class="bar"><i style="--progress: 38%"></i></div><small>Simulation verified</small></article>
+          <article><span>T3</span><strong>Map accuracy</strong><p>Maintain a target geometric accuracy of ± 5 cm.</p><div class="bar"><i style="--progress: 22%"></i></div><small>Hardware validation pending</small></article>
+          <article><span>T4</span><strong>Reliability</strong><p>Complete 10 consecutive collision-free runs.</p><div class="bar"><i style="--progress: 10%"></i></div><small>Final test planned</small></article>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>ROS 2 Autonomous Mobile Robot · Internship Project</p>
+      <p>Ubuntu 22.04 <span>·</span> ROS 2 Humble <span>·</span> 2026</p>
+    </footer>
+  </body>
+</html>
+
