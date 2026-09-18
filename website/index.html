@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Eight-week ROS 2 autonomous mobile robot internship project: simulation, SLAM, Nav2, hardware integration, and validation."
+      content="Eight-week ROS 2 autonomous mobile robot internship project: simulation, SLAM, Nav2, interface design, and validation."
     />
     <meta name="theme-color" content="#07111f" />
     <link
@@ -37,11 +37,11 @@
       <section class="hero" id="top" aria-labelledby="project-title">
         <div class="hero-copy">
           <p class="eyebrow">8-WEEK ROBOTICS INTERNSHIP · ROS 2 HUMBLE</p>
-          <h1 id="project-title">Autonomous mobile robot,<br /><span>from simulation to hardware.</span></h1>
+          <h1 id="project-title">Autonomous mobile robot,<br /><span>from model to validated system.</span></h1>
           <p class="hero-summary">
             A differential-drive robotics platform integrating LiDAR, wheel encoders,
             SLAM Toolbox, Nav2, RViz2, and Gazebo. The current phase brings mapping
-            from a verified simulation stack onto the physical robot.
+            through controlled experiments in a verified simulation stack.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#progress">View project log <span aria-hidden="true">↓</span></a>
@@ -66,7 +66,7 @@
           </div>
           <div class="mission-title">
             <span class="pulse"></span>
-            <div><strong>SLAM ON HARDWARE</strong><small>Mapping pipeline in progress</small></div>
+            <div><strong>SLAM SIMULATION STUDY</strong><small>Parameter study in progress</small></div>
           </div>
           <dl class="telemetry">
             <div><dt>Target room</dt><dd>5 × 5 m</dd></div>
@@ -86,7 +86,7 @@
       <section class="section architecture" id="architecture" aria-labelledby="architecture-title">
         <div class="section-heading">
           <div><p class="eyebrow">SYSTEM / DATA FLOW</p><h2 id="architecture-title">One stack, two environments.</h2></div>
-          <p>The same ROS 2 interfaces connect the tested simulation workflow to real sensors and actuators.</p>
+          <p>The ROS 2 interfaces connect the tested simulation workflow and define a migration path for future sensors and actuators.</p>
         </div>
 
         <div class="flow" aria-label="Robot software architecture">
@@ -128,22 +128,22 @@
           <article class="week done"><div class="week-no">W02</div><div class="week-body"><span class="state">Complete</span><h3>Robot Model & Simulation</h3><p>Differential-drive URDF with wheels and caster, spawned and driven in Gazebo.</p><ul><li>RobotModel verified in RViz2</li><li>Keyboard teleoperation working</li></ul></div></article>
           <article class="week done"><div class="week-no">W03</div><div class="week-body"><span class="state">Complete</span><h3>LiDAR & SLAM</h3><p>LaserScan visualization and online mapping with SLAM Toolbox in simulation.</p><ul><li><code>/scan</code> pipeline verified</li><li>2D map generated</li></ul></div></article>
           <article class="week done"><div class="week-no">W04</div><div class="week-body"><span class="state">Complete</span><h3>Autonomous Navigation</h3><p>Saved-map localization, goal planning, and autonomous motion using Nav2.</p><ul><li>AMCL + TF configured</li><li>DWB parameters tuned</li></ul></div></article>
-          <article class="week done"><div class="week-no">W05</div><div class="week-body"><span class="state">Complete</span><h3>Hardware Preparation</h3><p>Interface planning and handoff while the physical platform was assembled.</p><ul><li>Sensor and motor interfaces defined</li><li>Bringup plan prepared</li></ul></div></article>
-          <article class="week done"><div class="week-no">W06</div><div class="week-body"><span class="state">Complete</span><h3>Hardware Integration</h3><p>Motor and encoder firmware, odometry pipeline, RPLIDAR driver, and bringup package.</p><ul><li>10 Hz wheel-speed output</li><li><code>/odom</code>, TF, and <code>/scan</code> interfaces</li></ul></div></article>
-          <article class="week active"><div class="week-no">W07</div><div class="week-body"><span class="state">In progress</span><h3>SLAM on Hardware</h3><p>Build, tune, save, and verify a real-world map for final navigation.</p><ul><li>Validate scan, odometry, and TF</li><li>Map a 5 × 5 m room in under 5 min</li></ul></div></article>
-          <article class="week planned"><div class="week-no">W08</div><div class="week-body"><span class="state">Planned</span><h3>Navigation & Handoff</h3><p>Deploy Nav2 on the real map, run validation trials, and document the system.</p><ul><li>5 m route within 30 s</li><li>10 collision-free trials</li></ul></div></article>
+          <article class="week done"><div class="week-no">W05</div><div class="week-body"><span class="state">Complete</span><h3>Hardware Architecture</h3><p>Interface planning and theoretical system design for a future physical platform.</p><ul><li>Sensor and motor interfaces defined</li><li>Bringup plan prepared</li></ul></div></article>
+          <article class="week done"><div class="week-no">W06</div><div class="week-body"><span class="state">Complete</span><h3>Interface Preparation</h3><p>Software preparation for motor, encoder, odometry, RPLIDAR, and bringup interfaces.</p><ul><li>10 Hz wheel-speed output</li><li><code>/odom</code>, TF, and <code>/scan</code> interfaces</li></ul></div></article>
+          <article class="week active"><div class="week-no">W07</div><div class="week-body"><span class="state">In progress</span><h3>SLAM Simulation Validation</h3><p>Build, tune, save, and compare simulated maps under controlled conditions.</p><ul><li>Validate scan, odometry, and TF</li><li>Map a 5 × 5 m room in under 5 min</li></ul></div></article>
+          <article class="week planned"><div class="week-no">W08</div><div class="week-body"><span class="state">Planned</span><h3>Navigation & Handoff</h3><p>Deploy Nav2 on the validated simulated map, run final trials, and document the system.</p><ul><li>5 m route within 30 s</li><li>10 collision-free trials</li></ul></div></article>
         </div>
       </section>
 
       <section class="section validation" id="validation" aria-labelledby="validation-title">
         <div class="section-heading">
           <div><p class="eyebrow">FINAL ACCEPTANCE</p><h2 id="validation-title">Measured, not assumed.</h2></div>
-          <p>Clear pass criteria keep the final hardware demonstration focused and repeatable.</p>
+          <p>Clear pass criteria keep the final simulation study focused and repeatable.</p>
         </div>
         <div class="validation-grid">
           <article><span>T1</span><strong>Map completeness</strong><p>Map a 5 × 5 m room within 5 minutes.</p><div class="bar"><i style="--progress: 76%"></i></div><small>Week 7 · in progress</small></article>
           <article><span>T2</span><strong>Navigation speed</strong><p>Complete a 5 m autonomous route within 30 seconds.</p><div class="bar"><i style="--progress: 38%"></i></div><small>Simulation verified</small></article>
-          <article><span>T3</span><strong>Map accuracy</strong><p>Maintain a target geometric accuracy of ± 5 cm.</p><div class="bar"><i style="--progress: 22%"></i></div><small>Hardware validation pending</small></article>
+          <article><span>T3</span><strong>Map accuracy</strong><p>Maintain a target geometric accuracy of ± 5 cm.</p><div class="bar"><i style="--progress: 22%"></i></div><small>Simulation analysis pending</small></article>
           <article><span>T4</span><strong>Reliability</strong><p>Complete 10 consecutive collision-free runs.</p><div class="bar"><i style="--progress: 10%"></i></div><small>Final test planned</small></article>
         </div>
       </section>
