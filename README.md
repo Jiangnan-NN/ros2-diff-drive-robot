@@ -242,11 +242,27 @@ The repository was reorganized to improve reproducibility and readability:
 - Published odometry on `/odom`
 - Verified straight and turning odometry using simulated encoder data
 
-## Next Steps
+## Week 7 — Custom Gazebo World & SLAM Mapping
 
-- Connect and validate the physical robot hardware
-- Verify real encoder data and `/odom`
-- Verify RPLIDAR A1 data on `/scan`
-- Run SLAM Toolbox on the physical robot
-- Tune SLAM parameters for the real environment
-- Generate and validate the final real-world map
+- Created a custom Gazebo environment with multiple obstacles
+- Used LiDAR and SLAM Toolbox to explore the environment
+- Generated and saved a new 2D map
+- Verified scan, odometry, and TF during mapping
+
+## Week 8 — Autonomous Navigation
+
+- Loaded the SLAM-generated map for navigation
+- Used AMCL for robot localization
+- Used Nav2 for autonomous path planning and navigation
+- Successfully navigated to selected goals while avoiding obstacles
+
+## Final Status
+
+The 8-week ROS 2 differential-drive robot project is complete.
+
+The final simulation demonstrates the complete workflow:
+
+`Gazebo environment → LiDAR → SLAM mapping → saved map → AMCL localization → Nav2 autonomous navigation`
+
+The physical-hardware stage was replaced by an extended simulation study, allowing the complete mapping and navigation pipeline to be demonstrated in Gazebo.
+
