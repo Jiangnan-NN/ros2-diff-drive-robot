@@ -4,6 +4,14 @@ A differential-drive mobile robot developed with ROS 2 Humble, Gazebo, RViz2, an
 
 ![Differential-drive robot in Gazebo](docs/images/gazebo_robot.png)
 
+### Final SLAM Mapping
+
+![Final SLAM mapping](docs/images/final_slam.png)
+
+### Final Autonomous Navigation
+
+![Final autonomous navigation](docs/images/final_navigation.png)
+
 ## Project Overview
 
 This project focuses on the development of a differential-drive mobile robot using ROS 2.
