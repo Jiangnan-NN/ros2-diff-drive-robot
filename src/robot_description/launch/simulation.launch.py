@@ -23,6 +23,12 @@ def generate_launch_description():
     with open(urdf_file, 'r') as file:
         robot_description = file.read()
 
+    world_file = os.path.join(
+        pkg_share,
+        'worlds',
+        'final_world.world'
+    )
+
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             os.path.join(
@@ -30,7 +36,10 @@ def generate_launch_description():
                 'launch',
                 'gazebo.launch.py'
             )
-        )
+        ),
+        launch_arguments={
+            'world': world_file
+        }.items()
     )
 
     robot_state_publisher = Node(
