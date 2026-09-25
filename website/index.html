@@ -30,7 +30,7 @@
         <a href="#progress">Progress</a>
         <a href="#validation">Validation</a>
       </nav>
-      <span class="header-status"><i></i> Week 7 active</span>
+      <span class="header-status"><i></i> Project complete</span>
     </header>
 
     <main id="main">
@@ -40,8 +40,8 @@
           <h1 id="project-title">Autonomous mobile robot,<br /><span>from model to validated system.</span></h1>
           <p class="hero-summary">
             A differential-drive robotics platform integrating LiDAR, wheel encoders,
-            SLAM Toolbox, Nav2, RViz2, and Gazebo. The current phase brings mapping
-            through controlled experiments in a verified simulation stack.
+            SLAM Toolbox, Nav2, RViz2, and Gazebo. The final simulation demonstrates
+            mapping, localization, and autonomous navigation in a custom Gazebo environment.
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#progress">View project log <span aria-hidden="true">↓</span></a>
@@ -52,7 +52,7 @@
         <div class="mission-panel" aria-label="Current mission status">
           <div class="panel-topline">
             <span>MISSION STATUS</span>
-            <span>07 / 08</span>
+            <span>08 / 08</span>
           </div>
           <div class="radar" aria-hidden="true">
             <span class="ring ring-1"></span>
@@ -66,12 +66,12 @@
           </div>
           <div class="mission-title">
             <span class="pulse"></span>
-            <div><strong>SLAM SIMULATION STUDY</strong><small>Parameter study in progress</small></div>
+            <div><strong>FINAL SIMULATION</strong><small>Mapping & navigation completed</small></div>
           </div>
           <dl class="telemetry">
-            <div><dt>Target room</dt><dd>5 × 5 m</dd></div>
-            <div><dt>Sensor rate</dt><dd>≥ 10 Hz</dd></div>
-            <div><dt>Map accuracy</dt><dd>± 5 cm</dd></div>
+            <div><dt>Environment</dt><dd>Custom Gazebo</dd></div>
+            <div><dt>Mapping</dt><dd>2D SLAM</dd></div>
+            <div><dt>Navigation</dt><dd>Nav2 + AMCL</dd></div>
           </dl>
         </div>
       </section>
@@ -80,13 +80,13 @@
         <article><strong>ROS 2</strong><span>Humble on Ubuntu 22.04</span></article>
         <article><strong>2D SLAM</strong><span>LiDAR + wheel odometry</span></article>
         <article><strong>Nav2</strong><span>AMCL + DWB controller</span></article>
-        <article><strong>10 / 10</strong><span>Target collision-free runs</span></article>
+        <article><strong>8 / 8</strong><span>Weeks completed</span></article>
       </section>
 
       <section class="section architecture" id="architecture" aria-labelledby="architecture-title">
         <div class="section-heading">
-          <div><p class="eyebrow">SYSTEM / DATA FLOW</p><h2 id="architecture-title">One stack, two environments.</h2></div>
-          <p>The ROS 2 interfaces connect the tested simulation workflow and define a migration path for future sensors and actuators.</p>
+          <div><p class="eyebrow">SYSTEM / DATA FLOW</p><h2 id="architecture-title">One complete simulation stack.</h2></div>
+          <p>The ROS 2 interfaces connect perception, mapping, localization, and navigation in the completed Gazebo simulation workflow.</p>
         </div>
 
         <div class="flow" aria-label="Robot software architecture">
@@ -137,14 +137,14 @@
 
       <section class="section validation" id="validation" aria-labelledby="validation-title">
         <div class="section-heading">
-          <div><p class="eyebrow">FINAL ACCEPTANCE</p><h2 id="validation-title">Measured, not assumed.</h2></div>
-          <p>Clear pass criteria keep the final simulation study focused and repeatable.</p>
+          <div><p class="eyebrow">FINAL RESULTS</p><h2 id="validation-title">Simulation pipeline complete.</h2></div>
+          <p>The final system demonstrates the complete workflow from environment mapping to autonomous navigation.</p>
         </div>
         <div class="validation-grid">
-          <article><span>T1</span><strong>Map completeness</strong><p>Map a 5 × 5 m room within 5 minutes.</p><div class="bar"><i style="--progress: 76%"></i></div><small>Week 7 · in progress</small></article>
-          <article><span>T2</span><strong>Navigation speed</strong><p>Complete a 5 m autonomous route within 30 seconds.</p><div class="bar"><i style="--progress: 38%"></i></div><small>Simulation verified</small></article>
-          <article><span>T3</span><strong>Map accuracy</strong><p>Maintain a target geometric accuracy of ± 5 cm.</p><div class="bar"><i style="--progress: 22%"></i></div><small>Simulation analysis pending</small></article>
-          <article><span>T4</span><strong>Reliability</strong><p>Complete 10 consecutive collision-free runs.</p><div class="bar"><i style="--progress: 10%"></i></div><small>Final test planned</small></article>
+          <article><span>T1</span><strong>Custom Environment</strong><p>Created a Gazebo world with multiple obstacles for final simulation testing.</p><div class="bar"><i style="--progress: 100%"></i></div><small>Completed</small></article>
+          <article><span>T2</span><strong>SLAM Mapping</strong><p>Explored the environment with LiDAR and generated a saved 2D map using SLAM Toolbox.</p><div class="bar"><i style="--progress: 100%"></i></div><small>Completed</small></article>
+          <article><span>T3</span><strong>Localization</strong><p>Localized the robot on the generated map using AMCL and the ROS 2 TF tree.</p><div class="bar"><i style="--progress: 100%"></i></div><small>Completed</small></article>
+          <article><span>T4</span><strong>Autonomous Navigation</strong><p>Used Nav2 to plan paths and navigate autonomously around obstacles to selected goals.</p><div class="bar"><i style="--progress: 100%"></i></div><small>Completed</small></article>
         </div>
       </section>
     </main>
